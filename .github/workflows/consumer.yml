@@ -23,5 +23,6 @@ jobs:
         working-directory: consumer
       - name: publish to broker
         run: npm run pact:publish
+        working-directory: consumer
         env:
           PACT_BROKER_TOKEN: "{{ secrets.PACT_PROVIDER_TOKEN }}"
