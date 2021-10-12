@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "directories": {
-    "test": "test"
+    "test": "test",
+    "pact:publish": "pact-broker publish ./pacts --consumer-app-version=\"$(npx @pact-foundation/absolute-version)\" --tag-with-git-branch --broker-base-url=https://jonathancowling.pactflow.io"
   },
   "scripts": {
     "test": "jest"

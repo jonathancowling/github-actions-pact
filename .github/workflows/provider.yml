@@ -15,15 +15,6 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
-      - name: Download artifact
-        uses: dawidd6/action-download-artifact@v2
-        with:
-          # github_token: ${{secrets.GITHUB_TOKEN}}
-          workflow: consumer.yml
-          workflow_conclusion: success
-          branch: main
-          name: pacts
-          path: provider-tests/pacts
       - name: start LocalStack
         run: |-
           docker-compose up -d
@@ -55,6 +46,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
       - name: Test with Maven
-        run: mvn test --batch-mode -s settings.xml
+        run: |-
+          mvn test --batch-mode -s settings.xml \
+            -Dpactbroker.host="https://jonathancowling.pactflow.io" \
+            -Dpactbroker.auth.token="{{ secrets.PACT_PROVIDER_TOKEN }}"
         working-directory: provider-tests
           

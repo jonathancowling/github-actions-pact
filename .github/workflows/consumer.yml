@@ -21,13 +21,7 @@ jobs:
           npm ci
           npm run test
         working-directory: consumer
-      - name: Upload Pacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: pacts
-          path: consumer/pacts
-      - name: Invoke Provider Workflow
-        uses: benc-uk/workflow-dispatch@v1
-        with:
-          workflow: Pact Provider Tests
-          token: ${{ secrets.PAT_FOR_WORKFLOW }}
+      - name: publish to broker
+        run: npm pact:publish
+        env:
+          PACT_BROKER_TOKEN: "{{ secrets.PACT_PROVIDER_TOKEN }}"

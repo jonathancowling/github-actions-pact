@@ -2,7 +2,6 @@ package com.example.provider;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.logging.Logger;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.TestTemplate;
@@ -12,10 +11,14 @@ import au.com.dius.pact.provider.junit5.HttpTestTarget;
 import au.com.dius.pact.provider.junit5.PactVerificationContext;
 import au.com.dius.pact.provider.junit5.PactVerificationInvocationContextProvider;
 import au.com.dius.pact.provider.junitsupport.Provider;
-import au.com.dius.pact.provider.junitsupport.loader.PactFolder;
+import au.com.dius.pact.provider.junitsupport.loader.PactBroker;
+import au.com.dius.pact.provider.junitsupport.loader.PactBrokerAuth;
 
 @Provider("test provider")
-@PactFolder("pacts")
+@PactBroker(
+  host = "${pactbroker.url}",
+  port = "${pactbroker.port}",
+  authentication = @PactBrokerAuth(token = "${pactbroker.auth.token}"))
 public class ProviderTest {
 
   @TestTemplate
