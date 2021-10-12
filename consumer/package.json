@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "directories": {
-    "test": "test",
-    "pact:publish": "pact-broker publish ./pacts --consumer-app-version=\"$(npx @pact-foundation/absolute-version)\" --tag-with-git-branch --broker-base-url=https://jonathancowling.pactflow.io"
+    "test": "test"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "pact:publish": "pact-broker publish ./pacts --consumer-app-version=\"$(npx @pact-foundation/absolute-version)\" --tag-with-git-branch --broker-base-url=https://jonathancowling.pactflow.io"
   },
   "author": "Jonathan Cowling",
   "license": "MIT",
