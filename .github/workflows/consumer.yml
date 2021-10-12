@@ -26,3 +26,4 @@ jobs:
         working-directory: consumer
         env:
           PACT_BROKER_TOKEN: "{{ secrets.PACT_PROVIDER_TOKEN }}"
+          PACT_BROKER_BASE_URL: "https://jonathancowling.pactflow.io"
