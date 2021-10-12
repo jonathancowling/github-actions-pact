@@ -23,6 +23,7 @@ jobs:
           workflow_conclusion: success
           branch: main
           name: pacts
+          path: provider-tests/pacts
       - name: start LocalStack
         run: |-
           docker-compose up -d
