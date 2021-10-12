@@ -3,7 +3,7 @@ name: Pact Provider Tests
 on: workflow_dispatch
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -28,9 +28,12 @@ jobs:
         run: |-
           docker-compose up -d
         working-directory: provider
-      # race condition between localstack starting and deploying, but serverless should retry
-      # - name: Wait for LocalStack
-      #   run: sleep 20
+      - uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('provider/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
       - name: run provider in LocalStack
         run: |-
           npm ci
@@ -44,12 +47,14 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: 'localstack'
           AWS_SECRET_ACCESS_KEY: 'localstack'
-      - run: echo $REST_API_ID
+      - name: Cache local Maven repository
+      - uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('provider-tests/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
       - name: Test with Maven
         run: mvn test --batch-mode -s settings.xml
         working-directory: provider-tests
-      # - name: Tear Down LocalStack
-      #   run: |-
-      #     docker-compose down -d
-      #   working-directory: provider
           
