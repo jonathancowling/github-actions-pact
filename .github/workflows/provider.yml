@@ -48,7 +48,7 @@ jobs:
           AWS_ACCESS_KEY_ID: 'localstack'
           AWS_SECRET_ACCESS_KEY: 'localstack'
       - name: Cache local Maven repository
-      - uses: actions/cache@v2
+        uses: actions/cache@v2
         with:
           path: ~/.m2/repository
           key: ${{ runner.os }}-maven-${{ hashFiles('provider-tests/pom.xml') }}
