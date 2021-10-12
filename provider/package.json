@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "serverless": "serverless",
+    "sls": "serverless"
+  },
+  "devDependencies": {
+    "serverless": "^2.62.0",
+    "serverless-localstack": "^0.4.35"
+  }
+}
