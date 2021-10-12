@@ -48,7 +48,7 @@ jobs:
       - name: Test with Maven
         run: |-
           mvn test --batch-mode -s settings.xml \
-            -Dpactbroker.host="https://jonathancowling.pactflow.io" \
+            -Dpactbroker.url="https://jonathancowling.pactflow.io" \
             -Dpactbroker.auth.token="{{ secrets.PACT_PROVIDER_TOKEN }}"
         working-directory: provider-tests
           
