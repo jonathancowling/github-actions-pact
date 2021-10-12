@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "jest",
-    "pact:publish": "pact-broker publish ./pacts --consumer-app-version=\"$(npx @pact-foundation/absolute-version)\" --tag-with-git-branch -k $PACT_BROKER_TOKEN"
+    "pact:publish": "pact-broker publish ./pacts --consumer-app-version=\"$(npx @pact-foundation/absolute-version)\" --tag-with-git-branch"
   },
   "author": "Jonathan Cowling",
   "license": "MIT",
