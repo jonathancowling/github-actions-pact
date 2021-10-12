@@ -49,7 +49,7 @@ jobs:
         run: |-
           mvn test --batch-mode -s settings.xml \
             -Dpactbroker.url="https://jonathancowling.pactflow.io" \
-            -Dpactbroker.auth.token="{{ secrets.PACT_PROVIDER_TOKEN }}" \
+            -Dpactbroker.auth.token="{{ secrets.PACT_BROKER_TOKEN }}" \
             -Dpactbroker.port="80"
         working-directory: provider-tests
           
