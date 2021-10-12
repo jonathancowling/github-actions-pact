@@ -58,4 +58,4 @@ jobs:
                 -Dexpression=project.version
             )"
         working-directory: provider-tests
-          
+        continue-on-error: true
