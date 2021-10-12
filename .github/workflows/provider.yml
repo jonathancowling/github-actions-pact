@@ -52,9 +52,9 @@ jobs:
             -Dpactbroker.port="443" \
             -Dpactbroker.scheme="https" \
             -Dpactbroker.auth.token="${{ secrets.PACT_BROKER_TOKEN }}" \
-            -Dpact.verifier.publishResults="true"
+            -Dpact.verifier.publishResults="true" \
             -Dpact.provider.version="$(
-              mvn org.apache.maven.plugins:maven-help-plugin:2.1.1:evaluate \
+              mvn --batch-mode org.apache.maven.plugins:maven-help-plugin:2.1.1:evaluate \
                 -Dexpression=project.version
             )"
         working-directory: provider-tests
