@@ -10,15 +10,16 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
-      - name: run provider in LocalStack
+      - name: run consumer tests
         run: |-
           npm ci
           npm run test
         working-directory: consumer
-      - uses: actions/upload-artifact@v2
+      - name: Upload Pacts
+        uses: actions/upload-artifact@v2
         with:
           name: pacts
-          path: pacts
+          path: consumer/pacts
       - name: Invoke Provider Workflow
         uses: benc-uk/workflow-dispatch@v1
         with:
