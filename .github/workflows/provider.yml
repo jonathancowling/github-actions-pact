@@ -41,7 +41,8 @@ jobs:
           aws apigateway get-rest-apis --endpoint http://localhost:4566 --region us-east-1 \
             | jq -r '.items[0].id' \
             | xargs -I{} echo "REST_API_ID={}" >> $GITHUB_ENV
-      - name: Build with Maven
+      - run: echo $REST_API_ID
+      - name: Test with Maven
         run: mvn test --batch-mode -s settings.xml
         working-directory: provider-tests
       # - name: Tear Down LocalStack
