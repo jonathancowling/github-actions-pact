@@ -15,7 +15,12 @@ import au.com.dius.pact.provider.junitsupport.loader.PactBroker;
 import au.com.dius.pact.provider.junitsupport.loader.PactBrokerAuth;
 
 @Provider("test provider")
-@PactBroker
+@PactBroker(
+  scheme = "${pactbroker.scheme}",
+  host = "${pactbroker.host}",
+  port = "${pactbroker.port}",
+  authentication = @PactBrokerAuth(token = "${pactbroker.auth.token}")
+)
 public class ProviderTest {
 
   @TestTemplate
