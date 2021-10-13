@@ -54,8 +54,9 @@ jobs:
             -Dpactbroker.auth.token="${{ secrets.PACT_BROKER_TOKEN }}" \
             -Dpact.verifier.publishResults="true" \
             -Dpact.provider.version="$(
-              mvn --batch-mode --quiet org.apache.maven.plugins:maven-help-plugin:2.1.1:evaluate \
-                -Dexpression=project.version
+              mvn --batch-mode --quiet help:evaluate \
+                -Dexpression=project.version \
+                -DforceStdout
             )"
         working-directory: provider-tests
         continue-on-error: true

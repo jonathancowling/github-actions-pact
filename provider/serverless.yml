@@ -19,6 +19,12 @@ provider:
   lambdaHashingVersion: 20201221
   region: us-east-1
 
+package:
+  patterns:
+    - '!node_modules/**'
+    - '!.localstack/**'
+    - '!.serverless/**'
+
 # you can overwrite defaults here
 #  stage: dev
 #  region: us-east-1
@@ -55,7 +61,7 @@ functions:
   provider:
     handler: handler.endpoint
     environment:
-      ENVIRONMENT: '${opt:stage, dev}'
+      ENVIRONMENT: '${opt:stage, "dev"}'
     events:
       - http:
           path: /endpoint
