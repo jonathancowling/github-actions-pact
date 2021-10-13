@@ -32,7 +32,6 @@ public class ProviderTest {
 
   @BeforeEach
   void before(PactVerificationContext context) throws MalformedURLException {
-    Logger.getLogger(getClass().getName()).info("http://localhost:4566/restapis/" + System.getenv("REST_API_ID")  + "/local/_user_request_/");
     context.setTarget(HttpTestTarget.fromUrl(
       new URL("http://localhost:4566/restapis/" + System.getenv("REST_API_ID")  + "/local/_user_request_/")
     ));
