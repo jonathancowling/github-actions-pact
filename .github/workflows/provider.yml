@@ -38,6 +38,7 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: 'localstack'
           AWS_SECRET_ACCESS_KEY: 'localstack'
+      - run: echo $REST_API_ID
       - name: Cache local Maven repository
         uses: actions/cache@v2
         with:
@@ -54,7 +55,7 @@ jobs:
             -Dpactbroker.auth.token="${{ secrets.PACT_BROKER_TOKEN }}" \
             -Dpact.verifier.publishResults="true" \
             -Dpact.provider.version="$(
-              mvn --batch-mode org.apache.maven.plugins:maven-help-plugin:2.1.1:evaluate \
+              mvn --batch-mode --quiet org.apache.maven.plugins:maven-help-plugin:2.1.1:evaluate \
                 -Dexpression=project.version
             )"
         working-directory: provider-tests
