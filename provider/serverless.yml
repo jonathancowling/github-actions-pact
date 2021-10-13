@@ -54,6 +54,8 @@ provider:
 functions:
   provider:
     handler: handler.endpoint
+    environment:
+      ENVIRONMENT: '${opt:stage, dev}'
     events:
       - http:
           path: /endpoint

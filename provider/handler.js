@@ -1,5 +1,7 @@
 'use strict';
 
+require("dotenv");
+
 module.exports.endpoint = async () => {
   return {
     statusCode: 200,
@@ -9,6 +11,7 @@ module.exports.endpoint = async () => {
     body: JSON.stringify({
         key: 'value',
         random: Date.now().toString(),
+        env: process.env.ENVIRONMENT
     }),
   }
 };

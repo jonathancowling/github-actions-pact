@@ -25,6 +25,7 @@ describe('Pact with Order API', () => {
           body: {
             key: 'value',
             random: string(),
+            env: string(),
           },
           status: 200,
         },
@@ -34,7 +35,8 @@ describe('Pact with Order API', () => {
     it('will receive the list of current orders', async () => {
       expect(await apiCall()).toEqual(expect.objectContaining({
         key: 'value',
-        random: expect.any(String)
+        random: expect.any(String),
+        env: expect.any(String),
       }))
     })
   })
