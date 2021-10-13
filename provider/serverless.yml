@@ -21,7 +21,6 @@ provider:
 
 package:
   patterns:
-    - '!node_modules/**'
     - '!.localstack/**'
     - '!.serverless/**'
 
